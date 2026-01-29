@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BoozeBuddy - Premium Spirits & Beverages</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Age Verification Modal -->
+    <div id="ageVerification" class="modal">
+        <div class="modal-content">
+            <h2>Age Verification Required</h2>
+            <p>You must be 21 years or older to enter this site.</p>
+            <p>Please confirm your date of birth:</p>
+            <form id="ageForm">
+                <div class="form-group">
+                    <label for="birthdate">Date of Birth:</label>
+                    <input type="date" id="birthdate" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Verify Age</button>
+                <button type="button" class="btn btn-secondary" onclick="window.location.href='https://www.google.com'">I'm Under 21</button>
+            </form>
+            <p class="warning" id="ageWarning"></p>
+        </div>
+    </div>
+
+    <!-- Main Site Content -->
+    <div id="mainContent" class="hidden">
+        <header>
+            <div class="container">
+                <h1>🍺 BoozeBuddy</h1>
+                <p class="tagline">Premium Spirits & Beverages for the Modern Youth</p>
+                <div class="cart-icon">
+                    <button id="cartBtn" class="btn" aria-label="Shopping cart">
+                        🛒 Cart (<span id="cartCount">0</span>)
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="container">
+            <!-- Product Categories -->
+            <section class="categories">
+                <h2>Shop by Category</h2>
+                <div class="category-filters">
+                    <button class="filter-btn active" data-category="all">All</button>
+                    <button class="filter-btn" data-category="beer">Beer</button>
+                    <button class="filter-btn" data-category="wine">Wine</button>
+                    <button class="filter-btn" data-category="spirits">Spirits</button>
+                    <button class="filter-btn" data-category="cocktails">Ready-to-Drink</button>
+                </div>
+            </section>
+
+            <!-- Products Grid -->
+            <section class="products">
+                <h2>Our Products</h2>
+                <div id="productsGrid" class="products-grid">
+                    <!-- Products will be dynamically loaded here -->
+                </div>
+            </section>
+
+            <!-- Shopping Cart Modal -->
+            <div id="cartModal" class="modal hidden">
+                <div class="modal-content cart-modal-content">
+                    <span class="close" aria-label="Close cart">&times;</span>
+                    <h2>Your Shopping Cart</h2>
+                    <div id="cartItems"></div>
+                    <div class="cart-total">
+                        <h3>Total: $<span id="cartTotal">0.00</span></h3>
+                    </div>
+                    <button id="checkoutBtn" class="btn btn-primary">Proceed to Checkout</button>
+                </div>
+            </div>
+
+            <!-- Checkout Modal -->
+            <div id="checkoutModal" class="modal hidden">
+                <div class="modal-content">
+                    <span class="close-checkout" aria-label="Close checkout">&times;</span>
+                    <h2>Checkout</h2>
+                    <form id="checkoutForm">
+                        <div class="form-group">
+                            <label for="fullName">Full Name:</label>
+                            <input type="text" id="fullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone:</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Delivery Address:</label>
+                            <textarea id="address" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="idNumber">ID Number (for age verification on delivery):</label>
+                            <input type="text" id="idNumber" required>
+                        </div>
+                        <div class="checkout-total">
+                            <h3>Total: $<span id="checkoutTotal">0.00</span></h3>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Place Order</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="container">
+                <p>&copy; 2026 BoozeBuddy. Drink responsibly. Must be 21+ to purchase.</p>
+                <p class="disclaimer">Warning: Excessive alcohol consumption is harmful to your health.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
