@@ -147,12 +147,18 @@ document.getElementById('ageForm').addEventListener('submit', function(e) {
     
     const birthdate = new Date(document.getElementById('birthdate').value);
     const today = new Date();
+    
+    // Check if birthdate is in the future
+    if (birthdate > today) {
+        document.getElementById('ageWarning').textContent = 'Please enter a valid birthdate.';
+        return;
+    }
+    
     const age = today.getFullYear() - birthdate.getFullYear();
     const monthDiff = today.getMonth() - birthdate.getMonth();
     
     // Check if user is at least 21 years old
-    const isOldEnough = age > 21 || (age === 21 && monthDiff >= 0) || 
-                        (age === 21 && monthDiff === 0 && today.getDate() >= birthdate.getDate());
+    const isOldEnough = age > 21 || (age === 21 && (monthDiff > 0 || (monthDiff === 0 && today.getDate() >= birthdate.getDate())));
     
     if (isOldEnough) {
         sessionStorage.setItem('ageVerified', 'true');
@@ -376,7 +382,8 @@ function closeCheckoutAndReset() {
             total: cart.reduce((sum, item) => sum + item.price, 0)
         };
         
-        console.log('Order placed:', orderSummary);
+        // In production, this would send the order to a server
+        // console.log('Order placed:', orderSummary);
         
         document.getElementById('checkoutModal').innerHTML = `
             <div class="modal-content">
